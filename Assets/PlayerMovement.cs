@@ -1,31 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Speed of the player movement
+    public float speed = 5f; // Speed of the player movement
+    public float rotationSpeed = 10f;
 
-    private Rigidbody2D rb;
+    float horizontal;
+    float vertical;
+    float jump;
+
+    private CharacterController characterController;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        characterController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
         // Get input from horizontal and vertical axes
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
         // Calculate movement direction
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        Vector3 movement = new Vector3(horizontal, jump, vertical);
 
         // Normalize the movement vector to maintain constant speed in all directions
-        movement = movement.normalized * moveSpeed * Time.deltaTime;
+        movement = movement.normalized * speed * Time.deltaTime;
 
         // Move the player
-        rb.MovePosition(rb.position + movement);
+        characterController.Move(movement);
+        RotateToCamera();
+    }
+
+    private void RotateToCamera()
+    {
+//Get the Screen positions of the object
+		Vector2 positionOnScreen = Camera.main.WorldToViewportPoint (transform.position);
+		
+		//Get the Screen position of the mouse
+		Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+        //Get the angle between the points
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, mouseOnScreen, speed * Time.deltaTime, 0.0f);
+
+        //Ta Daaa
+        transform.rotation = Quaternion.LookRotation(newDirection);
+
     }
 }
