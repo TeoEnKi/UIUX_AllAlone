@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,8 +18,12 @@ public class Menu : MonoBehaviour
     [SerializeField] float minYSettings = -1000;
 
     //AudioManager audioManager
-    //DataManager dataManager;
+    DataManager dataManager;
 
+    private void Start()
+    {
+        dataManager = FindAnyObjectByType<DataManager>();
+    }
     public void Continue()
     {
 
@@ -68,14 +73,14 @@ public class Menu : MonoBehaviour
 
     IEnumerator RaiseSettingsPage()
     {
-        while (/*Camera.main.WorldToViewportPoint(*/settingsGO.anchoredPosition.y < maxYSettings)
+        while (settingsGO.anchoredPosition.y < maxYSettings)
         {
             //Vector3 settingsPageNewPos = settingsGO.position;
             //++settingsPageNewPos.y;
             //settingsGO.position = settingsPageNewPos;
             Vector3 settingsPageNewPos = Camera.main.WorldToViewportPoint(settingsGO.position);
             settingsPageNewPos.y+=2;
-            settingsGO.position = Vector3.MoveTowards(settingsGO.position, Camera.main.ViewportToWorldPoint(settingsPageNewPos), 80f);
+            settingsGO.position = Vector3.MoveTowards(settingsGO.position, Camera.main.ViewportToWorldPoint(settingsPageNewPos), 10f);
 
 
             yield return new WaitForSeconds(0);
@@ -113,6 +118,16 @@ public class Menu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void SetGraphicsLevel()
+    {
+        Slider graphicsSlider = EventSystem.current.currentSelectedGameObject.GetComponent<Slider>();
+
+        if (graphicsSlider != null)
+        {
+            QualitySettings.SetQualityLevel((int)graphicsSlider.value);
+        }
     }
 
 }
