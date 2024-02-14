@@ -24,8 +24,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canMove = true;
 
+    PlayerManager playerManager;
+
     void Start()
     {
+        playerManager = GetComponent<PlayerManager>();
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -72,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
         characterController.Move(moveDirection * Time.deltaTime);
 
-        if (canMove)
+        if (canMove && !playerManager.journalOpen && !playerManager.inventoryOpen)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
