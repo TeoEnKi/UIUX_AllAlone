@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -40,13 +41,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Front Journal
-    uniqueID: 3247810691
-    locked: 0
-  - name: Selected Bookmark
-    uniqueID: 2473491907
-    locked: 0
-  - name: Deselected Bookmark
-    uniqueID: 1665913849
     locked: 0

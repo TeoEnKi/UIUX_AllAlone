@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,18 +15,28 @@ public class Menu : MonoBehaviour
     [SerializeField] RectTransform settingsGO;
     [SerializeField] float maxYSettings = 34;
     [SerializeField] float minYSettings = -1000;
+    [SerializeField] Slider graphicsSlider;
 
+    [Header("Managers")]
     //AudioManager audioManager
-    DataManager dataManager;
+    public DataManager dataManager;
+
+    private void Awake()
+    {
+
+    }
 
     private void Start()
     {
         dataManager = FindAnyObjectByType<DataManager>();
-    }
-    public void Continue()
-    {
 
+        if (PlayerPrefs.HasKey("graphicsLvl") == true && graphicsSlider != null)
+        {
+            int number = (int)PlayerPrefs.GetFloat("graphicsLvl");
+            graphicsSlider.value = number;
+        }
     }
+
     public void NewGame()
     {
         //disable start menu
@@ -42,10 +51,9 @@ public class Menu : MonoBehaviour
         while (true)
         {
             Color currentColour = startmenuImg.color;
-            Debug.Log(currentColour);
             currentColour.r -= 0.1f;
             currentColour.g -= 0.1f;
-            currentColour.b -=0.1f;
+            currentColour.b -= 0.1f;
 
             startmenuImg.color = currentColour;
             if (startmenuImg.color == Color.black)
@@ -79,7 +87,7 @@ public class Menu : MonoBehaviour
             //++settingsPageNewPos.y;
             //settingsGO.position = settingsPageNewPos;
             Vector3 settingsPageNewPos = Camera.main.WorldToViewportPoint(settingsGO.position);
-            settingsPageNewPos.y+=2;
+            settingsPageNewPos.y += 2;
             settingsGO.position = Vector3.MoveTowards(settingsGO.position, Camera.main.ViewportToWorldPoint(settingsPageNewPos), 10f);
 
 
@@ -120,14 +128,10 @@ public class Menu : MonoBehaviour
         Application.Quit();
     }
 
-    public void SetGraphicsLevel()
+
+    public void SetGraphicsLevel(Slider graphicsSlider)
     {
-        Slider graphicsSlider = EventSystem.current.currentSelectedGameObject.GetComponent<Slider>();
+        PlayerPrefs.SetFloat("graphicsLvl", graphicsSlider.value);
 
-        if (graphicsSlider != null)
-        {
-            QualitySettings.SetQualityLevel((int)graphicsSlider.value);
-        }
     }
-
 }
