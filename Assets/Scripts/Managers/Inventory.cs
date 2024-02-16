@@ -1,11 +1,16 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] Collectables[] collectableGroups;
+    public Collectables[] collectableGroups;
     [SerializeField] Image[] weaponPlaceholders;
     [SerializeField] Image[] otherPlaceholders;
+
+
+    public bool hoverOnItem = false;
+    public string selectedItem;
 
     //show collectable img
     private void OnEnable()
@@ -16,8 +21,8 @@ public class Inventory : MonoBehaviour
             {
                 foreach (Collectable collectable in collectableGroup.collectables)
                 {
-                    if (collectable.quanity == 0) break;
-                    foreach(Image weaponPhs in weaponPlaceholders)
+                    if (collectable.quanity == 0) continue;
+                    foreach (Image weaponPhs in weaponPlaceholders)
                     {
                         if (weaponPhs.IsActive()) continue;
                         weaponPhs.gameObject.SetActive(true);
@@ -30,10 +35,14 @@ public class Inventory : MonoBehaviour
             {
                 foreach (Collectable collectable in collectableGroup.collectables)
                 {
-                    if (collectable.quanity == 0) break;
+                    if (collectable.quanity == 0) continue;
                     foreach (Image otherPhs in otherPlaceholders)
                     {
-                        if (otherPhs.IsActive()) continue;
+                        if (otherPhs.IsActive())
+                        {
+                            continue;
+
+                        }
                         otherPhs.gameObject.SetActive(true);
                         otherPhs.sprite = collectable.collectablePref.GetComponent<SpriteRenderer>().sprite;
                         break;
@@ -42,4 +51,39 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    private void DisablePlaceholder()
+    {
+
+        foreach (Image weaponPhs in weaponPlaceholders)
+        {
+            Debug.Log("nulled");
+
+            if (weaponPhs.IsActive())
+            {
+                weaponPhs.sprite = null;
+                weaponPhs.gameObject.SetActive(false);
+            }
+            else
+            {
+                break;
+            }
+
+        }
+        foreach (Image otherPhs in otherPlaceholders)
+        {
+            Debug.Log("nulled");
+
+            if (otherPhs.IsActive())
+            {
+                Debug.Log("nulled");
+                otherPhs.sprite = null;
+                otherPhs.gameObject.SetActive(false);
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
 }

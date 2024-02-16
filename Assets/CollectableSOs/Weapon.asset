@@ -16,13 +16,13 @@ MonoBehaviour:
   collectables:
   - name: Axe
     description: Chop and kill
-    quanity: 0
-    collectablePref: {fileID: 0}
+    quanity: 2
+    collectablePref: {fileID: 1398525475640595116, guid: a30d439d5c38a9944b79a1ff6b02dbff, type: 3}
   - name: Bow
     description: Shoot and kill
     quanity: 0
-    collectablePref: {fileID: 0}
+    collectablePref: {fileID: 3008071249960368515, guid: e8b760a71640fb4499e21357aa3fcfa9, type: 3}
   - name: Arrow
     description: Sharp to kill
     quanity: 0
-    collectablePref: {fileID: 0}
+    collectablePref: {fileID: 1472220270632498660, guid: 21258e6a10c637a4ab16c9827bd1187d, type: 3}
