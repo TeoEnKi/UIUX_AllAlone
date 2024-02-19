@@ -14,23 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   collectables:
-  - name: Stick
-    description: Poke poke. Craft things with it
-    quanity: 1
-    collectablePref: {fileID: 6958779925801441085, guid: a7b432d0c1d1d7c43beb93e09e0e493a, type: 3}
-  - name: Rope
-    description: Sturdy. Craft things with it
-    quanity: 1
-    collectablePref: {fileID: 8240443131964324443, guid: a330238a30d9eef45a59102b957bf6a2, type: 3}
-  - name: Herb
-    description: Create drugs
-    quanity: 1
-    collectablePref: {fileID: 6594658343308178889, guid: b6e7c6ad7a08eb54db210a505037f76f, type: 3}
-  - name: Rock
-    description: Craft things with it
-    quanity: 1
-    collectablePref: {fileID: 5152629088027465931, guid: 92b43421301f0164c9dd276a17e97961, type: 3}
-  - name: Paper
-    description: Craft things with it
-    quanity: 1
-    collectablePref: {fileID: 8164440469009390736, guid: 8ea2ced81a02bdc4a8bf1bb265137a19, type: 3}
+  - {fileID: 11400000, guid: 22bc28aeb4819bf499945dfdf7f1c828, type: 2}
+  - {fileID: 11400000, guid: a17efddd39719b4419e1963313e0f2c9, type: 2}
+  - {fileID: 11400000, guid: 36914604d1adc18498cac63b9d1ba497, type: 2}
+  - {fileID: 11400000, guid: afe65088eb813ee4a99cfc09d35a705c, type: 2}
+  - {fileID: 11400000, guid: 2ba3ecc5f28de894ca2920fad40f4307, type: 2}

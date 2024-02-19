@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399416988f860ee48a206e4eff62fef8, type: 3}
+  m_Name: Teddy
+  m_EditorClassIdentifier: 
+  type: 0
+  recipeImg: {fileID: 137028735022877792, guid: 7e8b7ebe3b7daa140ad983db12fe43c3, type: 3}
+  neededMaterials:
+  - neededQty: 2
+    collectable: {fileID: 11400000, guid: afe65088eb813ee4a99cfc09d35a705c, type: 2}
+  - neededQty: 2
+    collectable: {fileID: 11400000, guid: 2ba3ecc5f28de894ca2920fad40f4307, type: 2}
+  result: {fileID: 11400000, guid: de9004a60353ff6479fb2f07c25fd099, type: 2}

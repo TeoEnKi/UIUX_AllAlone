@@ -14,15 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   collectables:
-  - name: Canned Soup
-    description: Canned soup to eat. It's bland.
-    quanity: 1
-    collectablePref: {fileID: 1390188372117128688, guid: fbc67bcf24c65944d89c02af52deff9a, type: 3}
-  - name: Meat
-    description: It's raw. Cook It.
-    quanity: 1
-    collectablePref: {fileID: 815812882585970813, guid: ae6972f504c7e0b418c7dc0148a475a2, type: 3}
-  - name: Cooked Food
-    description: Feed her first, then feed myself
-    quanity: 1
-    collectablePref: {fileID: 8417111910361498188, guid: 65d4045c48d04f8419dae2a581398a4d, type: 3}
+  - {fileID: 11400000, guid: dde00b34a94dbf046876b78c30914f08, type: 2}
+  - {fileID: 11400000, guid: 83c629fe73035bd4993a9e97e50844c6, type: 2}
+  - {fileID: 11400000, guid: 2e19c31c7a3ba404d8b29194ea2b5ebd, type: 2}

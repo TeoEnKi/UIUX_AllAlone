@@ -14,15 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   collectables:
-  - name: Teddy
-    description: Soft and cuddly toy
-    quanity: 1
-    collectablePref: {fileID: 7908808440761857535, guid: b40c52267e94e1a4ebebadadedb731c9, type: 3}
-  - name: Puzzle
-    description: A simple challnge for her
-    quanity: 0
-    collectablePref: {fileID: 8048454997549151587, guid: 02f5cd671ef7f5741a682e7851c07b0f, type: 3}
-  - name: House
-    description: Not much, but it's still a nice toy
-    quanity: 1
-    collectablePref: {fileID: 6445145633160611165, guid: dfce09c702242b149bef284f54cf0cee, type: 3}
+  - {fileID: 11400000, guid: f247a5bd1e0673d41aab5ee608322072, type: 2}
+  - {fileID: 11400000, guid: cdfdc1e4ca9b4b54bb3e2beda0e4b3c0, type: 2}
+  - {fileID: 11400000, guid: de9004a60353ff6479fb2f07c25fd099, type: 2}

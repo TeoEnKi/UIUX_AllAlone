@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750726e7c6d941b42a1f4d57e99968e0, type: 3}
+  m_Name: Arrow
+  m_EditorClassIdentifier: Assembly-CSharp::Collectable
+  name: Arrow
+  description: sharp
+  quanity: 0
+  collectablePref: {fileID: 1472220270632498660, guid: 21258e6a10c637a4ab16c9827bd1187d, type: 3}

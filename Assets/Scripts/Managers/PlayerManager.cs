@@ -1,44 +1,92 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+public enum PlayerState { None, Journal, Inventory };
 
 public class PlayerManager : MonoBehaviour
 {
-    public bool journalOpen = false;
-    public bool inventoryOpen = false;
+    public static PlayerManager instance;
+    public PlayerState playerState = PlayerState.None;
+
+    public GameObject objectInfrontOfPlayer = null;
+
+    public string survivorsKilledKey = "survivors Killed";
+
+    public string meatFedPercentKey = "meatFed";
+    [Range(0, 100)] public int meatFedPercent = 100;
+    int currMeatFedPercent;
+
+    public string defensePercentKey = "defense";
+    [Range(0, 100)] public int defensePercent = 100;
+    int currDefensePercent;
 
     [Header("Health")]
     [Range(0, 100)] public int physicalHealthLvl = 100;
-    int currPhysHealthLvl;
+    [SerializeField] int currPhysHealthLvl;
     [SerializeField] Image phyStateImg;
     [SerializeField] Sprite[] allPhySts;
     string phyHealthKey = "phyHealth";
 
     [Range(0, 80)] public int mentalHealthLvl = 80;
-    int currMentHealthLvl;
+    [SerializeField] int currMentHealthLvl;
     [SerializeField] Image mentalStateImg;
     [SerializeField] Sprite[] allMenSts;
     string mentHealthKey = "menHealth";
 
-
     // Start is called before the first frame update
     void Start()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+        if (PlayerPrefs.HasKey(meatFedPercentKey))
+        {
+            currMeatFedPercent = PlayerPrefs.GetInt(meatFedPercentKey);
+        }
+        else
+        {
+            currMeatFedPercent = meatFedPercent;
+            PlayerPrefs.SetInt(meatFedPercentKey, currMeatFedPercent);
+        }
+
+        if (PlayerPrefs.HasKey(defensePercentKey))
+        {
+            currDefensePercent = PlayerPrefs.GetInt(defensePercentKey);
+        }
+        else
+        {
+            currDefensePercent = defensePercent;
+            PlayerPrefs.SetInt(defensePercentKey, currDefensePercent);
+        }
+
         if (PlayerPrefs.HasKey(phyHealthKey))
         {
             currPhysHealthLvl = PlayerPrefs.GetInt(phyHealthKey);
+            ChangePhyState(0);
+
         }
         else
         {
             currPhysHealthLvl = physicalHealthLvl;
+            ChangePhyState(-50);
         }
+
         if (PlayerPrefs.HasKey(mentHealthKey))
         {
             currMentHealthLvl = PlayerPrefs.GetInt(mentHealthKey);
+            ChangeMentState(0);
+
         }
         else
         {
             currMentHealthLvl = mentalHealthLvl;
+            ChangeMentState(-40);
+
         }
     }
     private void Update()
@@ -77,7 +125,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         phyStateImg.sprite = allPhySts[Mathf.CeilToInt((float)currPhysHealthLvl / 20)];
-        PlayerPrefs.SetInt(phyHealthKey,currPhysHealthLvl);
+        PlayerPrefs.SetInt(phyHealthKey, currPhysHealthLvl);
     }
 
     private void Die()

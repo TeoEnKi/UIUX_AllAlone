@@ -13,4 +13,13 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   day: 0
-  objectives: []
+  objectives:
+  - objType: 0
+    objTitle: Talk to Daughter
+    complete: 0
+  - objType: 0
+    objTitle: Feed Daughter
+    complete: 0
+  - objType: 0
+    objTitle: give daughter a toy
+    complete: 1

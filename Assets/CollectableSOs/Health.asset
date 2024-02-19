@@ -14,11 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   collectables:
-  - name: Pills
-    description: Restore 15p of mental health
-    quanity: 1
-    collectablePref: {fileID: 8842040783056297074, guid: 225c4e7b2ce58fd4a9e51f72cd366067, type: 3}
-  - name: Med Kit
-    description: Restore 20p of physical health
-    quanity: 1
-    collectablePref: {fileID: 8336160819318172384, guid: 89c917bd4c8879a44975f76000508f38, type: 3}
+  - {fileID: 11400000, guid: bc589d0b3af588f4183bfa169f4d7eac, type: 2}
+  - {fileID: 11400000, guid: 34e78c0c58880b74ba800c288fe7cb97, type: 2}

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750726e7c6d941b42a1f4d57e99968e0, type: 3}
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  name: Axe
+  description: Chop and Kill
+  quanity: 10
+  collectablePref: {fileID: 1398525475640595116, guid: a30d439d5c38a9944b79a1ff6b02dbff, type: 3}
