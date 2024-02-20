@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] RectTransform messagePlaceholder;
 
     [SerializeField] Message currMessage;
-    [SerializeField] List<Message> currMessageOpts;
+    List<Message> currMessageOpts;
 
     [SerializeField] Dialogues[] dialogues;
 
@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && PlayerManager.instance.objectInfrontOfPlayer.CompareTag("Daughter") && currMessage == null)
         {
-            Debug.LogWarning("eff");
+
             PlayerManager.instance.playerState = PlayerState.Dialogue;
             SetUpCurrMessage(Person.Daughter);
             DisplayCurrMessage();
@@ -33,6 +33,7 @@ public class DialogueManager : MonoBehaviour
     }
     void ContinueDialogue()
     {
+
         if (currMessage.nextMessage.Length == 0)
         {
             currMessage = null;
@@ -40,8 +41,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (currMessage.nextMessage[0].person == Person.Player)
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+
             DisplayBtns();
         }
         else if (currMessage.nextMessage[0].person == Person.Daughter)
@@ -74,8 +74,6 @@ public class DialogueManager : MonoBehaviour
 
     private void HideMessage()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         PlayerManager.instance.playerState = PlayerState.None;
         dialogueParent.gameObject.SetActive(false);
     }
@@ -107,32 +105,32 @@ public class DialogueManager : MonoBehaviour
     }
     public void DisplayBtns()
     {
-        currMessageOpts = new List<Message>(currMessage.nextMessage);
+        currMessageOpts = new List<Message>();
         messagePlaceholder.gameObject.SetActive(false);
         namePlaceholder.gameObject.SetActive(false);
 
         for (int i = 0; i < currMessage.nextMessage.Length; i++)
         {
-            Debug.Log(i);
+            Debug.Log(currMessage.nextMessage.Length + "" + i);
             opts[i].gameObject.SetActive(true);
             opts[i].GetComponentInChildren<TMP_Text>().text = currMessage.nextMessage[i].text;
+            currMessageOpts.Add(currMessage.nextMessage[i]);
         }
 
     }
     public void NextMessageOnClick(Button button)
     {
         Message selectedOpt = null;
-        foreach (char letter in button.name)
+        for (int i = 0; i < currMessageOpts.Count; i++)
         {
-            if (char.IsDigit(letter))
+            Debug.Log(i);
+            if (opts[i] == button)
             {
-                selectedOpt = currMessageOpts[(int)letter];
+                selectedOpt = currMessageOpts[i];
                 break;
             }
         }
-        currMessage = selectedOpt.nextMessage[0];
-
-
+        currMessage = selectedOpt;
         ContinueDialogue();
 
     }

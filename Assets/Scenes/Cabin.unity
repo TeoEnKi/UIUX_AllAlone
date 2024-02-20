@@ -958,8 +958,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 14.4339, y: 0}
+  m_SizeDelta: {x: -28.8678, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &161448954
 MonoBehaviour:
@@ -3069,8 +3069,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 284.56577, y: -0.000030517578}
-  m_SizeDelta: {x: 569.1315, y: 0.0001}
+  m_AnchoredPosition: {x: 284.57, y: -0.000030517578}
+  m_SizeDelta: {x: 569.13, y: 0.0001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &469886095
 GameObject:
@@ -4176,7 +4176,7 @@ MonoBehaviour:
   - {fileID: 1773501585}
   - {fileID: 1100011828}
   namePlaceholder: {fileID: 416240085}
-  messagePlaceholder: {fileID: 1650791386}
+  messagePlaceholder: {fileID: 589832643}
   currMessage: {fileID: 0}
   dialogues:
   - {fileID: 11400000, guid: 4809bb0b55e8a2541b6c1c1f672af43b, type: 2}
@@ -6024,10 +6024,10 @@ MonoBehaviour:
       - m_Target: {fileID: 755566656}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: NextMessageOnClick
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1100011828}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6922,7 +6922,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -4.21
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -9199,10 +9199,10 @@ MonoBehaviour:
       - m_Target: {fileID: 755566656}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: NextMessageOnClick
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1773501585}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9553,7 +9553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1822359758
 RectTransform:
   m_ObjectHideFlags: 0

@@ -55,23 +55,9 @@ public class JournalInventory : MonoBehaviour
             }
         }
 
-        HandleCursor();
-
     }
 
-    private void HandleCursor()
-    {
-        if (playerManager.playerState == PlayerState.Journal || playerManager.playerState == PlayerState.Inventory)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-    }
+
     public void HideJournal()
     {
         if (!journal.gameObject.activeSelf) return;

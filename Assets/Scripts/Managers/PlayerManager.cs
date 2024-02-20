@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-public enum PlayerState { None, Dialogue, Journal, Inventory };
+public enum PlayerState { None, NewScene, Dialogue, Journal, Inventory };
 
 public class PlayerManager : MonoBehaviour
 {
@@ -94,6 +94,7 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         RevealNearbyCollectables();
+        HandleCursor();
     }
 
     private void RevealNearbyCollectables()
@@ -164,5 +165,18 @@ public class PlayerManager : MonoBehaviour
     private void Die()
     {
         throw new NotImplementedException();
+    }
+    private void HandleCursor()
+    {
+        if (playerState != PlayerState.None && playerState!= PlayerState.NewScene)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }

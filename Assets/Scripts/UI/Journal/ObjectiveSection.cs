@@ -9,7 +9,7 @@ public class ObjectiveSection : MonoBehaviour
     [SerializeField] TMP_Text foodPercentage;
     [SerializeField] TMP_Text defensePercentage;
     string objText = "";
-    ObjType prevObjType = ObjType.Tutorial;
+    ObjType prevObjType = ObjType.None;
     [SerializeField] DailyObjectives[] dailyObjectives;
 
     private void Awake()
@@ -19,6 +19,9 @@ public class ObjectiveSection : MonoBehaviour
     private void OnEnable()
     {
         objText = "";
+
+        prevObjType = dailyObjectives[0].objectives[0].objType;
+
         foreach (Objective obj in dailyObjectives[0].objectives)
         {
             if (objText == "" && prevObjType == obj.objType) 

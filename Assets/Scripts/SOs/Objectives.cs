@@ -11,7 +11,7 @@ public class DailyObjectives : ScriptableObject
 
     public Objective[] objectives;
 }
-public enum ObjType {Tutorial, Daughter, Cure, Final}
+public enum ObjType {None, Tutorial, Daughter, Cure, Final}
 
 [System.Serializable]
 public class Objective
