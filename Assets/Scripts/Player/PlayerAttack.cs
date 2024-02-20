@@ -64,7 +64,6 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator DisableAttack(float delay)
     {
         yield return new WaitForSeconds(delay);
-        Debug.Log("efe");
         attacking = false;
     }
     // Update is called once per frame

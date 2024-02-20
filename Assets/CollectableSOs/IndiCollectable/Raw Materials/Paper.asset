@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750726e7c6d941b42a1f4d57e99968e0, type: 3}
   m_Name: Paper
   m_EditorClassIdentifier: 
-  name: Paper
   description: craft things with it
   quanity: 0
   collectablePref: {fileID: 8164440469009390736, guid: 8ea2ced81a02bdc4a8bf1bb265137a19, type: 3}

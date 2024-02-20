@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750726e7c6d941b42a1f4d57e99968e0, type: 3}
   m_Name: Canned Soup
   m_EditorClassIdentifier: Assembly-CSharp::Collectable
-  name: Canned Soup
   description: soup in can
   quanity: 0
   collectablePref: {fileID: 1390188372117128688, guid: fbc67bcf24c65944d89c02af52deff9a, type: 3}

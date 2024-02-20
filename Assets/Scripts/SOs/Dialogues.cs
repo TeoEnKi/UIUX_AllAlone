@@ -1,21 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
-public enum DialogueType { Daughter }
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/DialogueScriptableObject", order = 5)]
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/DialoguesScriptableObject", order = 6)]
 public class Dialogues : ScriptableObject
 {
-    public DialogueType type;
+    public Day day;
 
-    public List<Dialogue> dialogues;
+    public List<StartingMessage> startingMessages_Daughter;
+    public List<StartingMessage> startingMessages_Survivor;
 }
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/DialogueScriptableObject", order = 5)]
-public class Dialogue
+[System.Serializable]
+public class StartingMessage
 {
-    public string name;
-    [TextArea(3, 10)]
-    public string text;
-
-    //the option text will be found in the first dialogue object of the list
-    public Dialogues[] nextDialogues;
+    public Message startingMessage;
+    public bool keepDisplaying;
 }

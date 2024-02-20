@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class DataManager : MonoBehaviour
 {
@@ -31,6 +30,7 @@ public class DataManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
+
             //currResMulti = minResMulti + (int)Mathf.Pow(PlayerPrefs.GetFloat("graphicsLvl"), 3);
             //Debug.Log(currResMulti);
             //Vector2 size = new Vector2(16, 9);

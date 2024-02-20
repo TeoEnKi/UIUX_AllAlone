@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750726e7c6d941b42a1f4d57e99968e0, type: 3}
   m_Name: Cooked Food
   m_EditorClassIdentifier: Assembly-CSharp::Collectable
-  name: Cooked Food
   description: edible food
   quanity: 1
   collectablePref: {fileID: 8417111910361498188, guid: 65d4045c48d04f8419dae2a581398a4d, type: 3}

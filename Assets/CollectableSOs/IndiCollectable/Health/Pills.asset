@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750726e7c6d941b42a1f4d57e99968e0, type: 3}
   m_Name: Pills
   m_EditorClassIdentifier: 
-  name: Pills
   description: Heals mental health by 20 pts
-  quanity: 1
+  quanity: 0
   collectablePref: {fileID: 8842040783056297074, guid: 225c4e7b2ce58fd4a9e51f72cd366067, type: 3}

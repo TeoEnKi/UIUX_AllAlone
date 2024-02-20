@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 750726e7c6d941b42a1f4d57e99968e0, type: 3}
-  m_Name: Meat
+  m_Script: {fileID: 11500000, guid: e88b7696a7b7bca4fb33b0ff5e1298dd, type: 3}
+  m_Name: Daughter_tut
   m_EditorClassIdentifier: 
-  description: Edible if brave enough
-  quanity: 1
-  collectablePref: {fileID: 815812882585970813, guid: ae6972f504c7e0b418c7dc0148a475a2, type: 3}
+  day: 0
+  startingMessages_Daughter:
+  - startingMessage: {fileID: 11400000, guid: 911de5977e719f64c98ee82128548d75, type: 2}
+    keepDisplaying: 1
+  startingMessages_Survivor: []

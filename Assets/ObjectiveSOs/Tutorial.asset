@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   day: 0
   objectives:
-  - objType: 0
-    objTitle: Talk to Daughter
+  - objType: 1
+    objTitle: Talk to her
     complete: 0
-  - objType: 0
-    objTitle: Feed Daughter
+  - objType: 1
+    objTitle: Feed her
     complete: 0
-  - objType: 0
-    objTitle: give daughter a toy
-    complete: 1
+  - objType: 1
+    objTitle: give a toy
+    complete: 0

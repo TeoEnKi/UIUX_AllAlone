@@ -4,15 +4,12 @@ public class PickUpCollectables : MonoBehaviour
 {
     [SerializeField] Collectables[] collectableGrps;
 
-    private void Start()
-    {
-    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && PlayerManager.instance.playerState == PlayerState.None)
         {
             if (PlayerManager.instance.objectInfrontOfPlayer == null) return;
-            if (PlayerManager.instance.objectInfrontOfPlayer.CompareTag("Collectable"))
+            if (PlayerManager.instance.objectInfrontOfPlayer.CompareTag("Collectable") /*&& TooltipManager.instance.NearPlayer(PlayerManager.instance.objectInfrontOfPlayer.transform.position)*/)
             {
                 PickUp();
             }
@@ -26,7 +23,7 @@ public class PickUpCollectables : MonoBehaviour
             {
                 if (indiCol.collectablePref.name.Contains(PlayerManager.instance.objectInfrontOfPlayer.name))
                 {
-                    Debug.Log(indiCol.name +" "+PlayerManager.instance.objectInfrontOfPlayer.name);
+                    Debug.Log(indiCol.collectablePref.name +" "+PlayerManager.instance.objectInfrontOfPlayer.name);
 
                     indiCol.quanity++;
                     Destroy(PlayerManager.instance.objectInfrontOfPlayer);

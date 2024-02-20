@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750726e7c6d941b42a1f4d57e99968e0, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
-  name: Rock
   description: hard. craft things
   quanity: 2
   collectablePref: {fileID: 5152629088027465931, guid: 92b43421301f0164c9dd276a17e97961, type: 3}

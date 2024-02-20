@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750726e7c6d941b42a1f4d57e99968e0, type: 3}
   m_Name: Med Kit
   m_EditorClassIdentifier: 
-  name: Med Kit
   description: Heals physical health by 30 pts
   quanity: 1
   collectablePref: {fileID: 8336160819318172384, guid: 89c917bd4c8879a44975f76000508f38, type: 3}

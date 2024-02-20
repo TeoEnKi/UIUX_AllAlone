@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/IndividualCollectableScriptableObject", order = 2)]
 public class IndiCollectable : ScriptableObject
 {
-    public string name;
     [TextArea(3, 10)]
     public string description;
     public int quanity;

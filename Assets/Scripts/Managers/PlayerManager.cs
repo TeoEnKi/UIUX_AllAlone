@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-public enum PlayerState { None, Journal, Inventory };
+public enum PlayerState { None, Dialogue, Journal, Inventory };
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
+
+    public Day currDay = 0;
     public PlayerState playerState = PlayerState.None;
 
     public GameObject objectInfrontOfPlayer = null;
@@ -31,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] int currMentHealthLvl;
     [SerializeField] Image mentalStateImg;
     [SerializeField] Sprite[] allMenSts;
-    string mentHealthKey = "menHealth";
+    public string mentHealthKey = "menHealth";
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +93,37 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
+        RevealNearbyCollectables();
+    }
+
+    private void RevealNearbyCollectables()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 30);
+        {
+            if (colliders.Length > 0)
+                foreach (Collider collider in colliders)
+                {
+                    if (collider.transform.parent == null) continue;
+                    if (collider.transform.parent.CompareTag("Collectable"))
+                    {
+                        int siblingId = collider.transform.GetSiblingIndex();
+                        Debug.Log(collider.gameObject.name +" "+ collider.transform.parent.name);
+
+                        RectTransform[] rectTransforms = collider.transform.parent.GetComponentsInChildren<RectTransform>();
+                        foreach (RectTransform rect in rectTransforms)
+                        {
+                            Image rectImg = rect.GetComponent<Image>();
+                            if (rectImg == null) continue;
+                            rectImg.enabled = true;
+                            break;
+
+                        }
+
+                    }
+                }
+        }
+
+
     }
 
     //either -ve or +ve number

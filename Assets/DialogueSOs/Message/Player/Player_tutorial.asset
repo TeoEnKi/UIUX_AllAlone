@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e88b7696a7b7bca4fb33b0ff5e1298dd, type: 3}
-  m_Name: Data
-  m_EditorClassIdentifier: 
-  type: 0
-  dialogues: []
+  m_Script: {fileID: 11500000, guid: a7fac06d16243a548b52f0be75727b65, type: 3}
+  m_Name: Player_tutorial
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  person: 0
+  text: I'll get you food
+  nextMessage: []
