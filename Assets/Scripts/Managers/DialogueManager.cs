@@ -21,9 +21,9 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerManager.instance.objectInfrontOfPlayer == null || textStillPrinting) return;
-        if (Input.GetKeyDown(KeyCode.E) && PlayerManager.instance.objectInfrontOfPlayer.CompareTag("Daughter") && currMessage == null)
-        {
+        if (Input.GetKeyDown(KeyCode.E) && PlayerManager.instance.objectInfrontOfPlayer != null && currMessage == null)
+        {        if (!PlayerManager.instance.objectInfrontOfPlayer.CompareTag("Daughter")) return;
+
             TutorialManager.instance.UpdateStage(TutorialStage.Talk_To_Daughter);
             TutorialManager.instance.UpdateStage(TutorialStage.Talk_To_Daughter_Again);
             PlayerManager.instance.playerState = PlayerState.Dialogue;
@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour
             if (currMessage == null) return;
             DisplayCurrMessage();
         }
-        else if (Input.anyKeyDown && currMessage != null)
+        else if (Input.anyKeyDown && currMessage != null && !textStillPrinting)
         {
             ContinueDialogue();
         }

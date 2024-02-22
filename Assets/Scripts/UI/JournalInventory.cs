@@ -28,6 +28,8 @@ public class JournalInventory : MonoBehaviour
                 AudioManager.instance.PlayOpenJournal();
 
                 HideInventory();
+                playerManager.playerState = PlayerState.Journal;
+
                 journal.gameObject.SetActive(true);
                 journalAnimator.Play("Open");
             }
@@ -41,6 +43,8 @@ public class JournalInventory : MonoBehaviour
                 AudioManager.instance.PlayOpenInventory();
 
                 HideJournal();
+                playerManager.playerState = PlayerState.Inventory;
+
                 inventory.gameObject.SetActive(true);
             }
         }
@@ -48,12 +52,10 @@ public class JournalInventory : MonoBehaviour
         {
             if (playerManager.playerState == PlayerState.Journal)
             {
-                playerManager.playerState = PlayerState.None;
                 HideJournal();
             }
             if (playerManager.playerState == PlayerState.Inventory)
             {
-                playerManager.playerState = PlayerState.None;
                 HideInventory();
             }
         }
@@ -64,6 +66,7 @@ public class JournalInventory : MonoBehaviour
     public void HideJournal()
     {
         if (!journal.gameObject.activeSelf) return;
+        playerManager.playerState = PlayerState.None;
         journalAnimator.Play("Close");
         StartCoroutine(DisableJournal());
 
@@ -77,6 +80,7 @@ public class JournalInventory : MonoBehaviour
     public void HideInventory()
     {
         if (!inventory.gameObject.activeSelf) return;
+        playerManager.playerState = PlayerState.None;
         inventoryAnimator.Play("Close");
         StartCoroutine(DisableInventory());
 

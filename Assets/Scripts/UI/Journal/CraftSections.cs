@@ -54,7 +54,7 @@ public class CraftSections : MonoBehaviour
             selectedPageId = 1;
         }
 
-        if (craftable[selectedPageId] == false) return;
+        if (craftable[selectedPageId] == false || TutorialManager.instance.BlockArea(TutorialStage.Craft_Toy))return;
 
         TutorialManager.instance.UpdateStage(TutorialStage.Craft_Toy);
 
