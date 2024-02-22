@@ -8,9 +8,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform weaponHolder;
     Transform activeWeapon;
     Animator weaponAnim;
+    ItemEquipManager itemEquipManager;
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager>();
+        itemEquipManager = GetComponent<ItemEquipManager>();
     }
     private void Update()
     {
@@ -24,9 +26,9 @@ public class PlayerAttack : MonoBehaviour
         }
         if (activeWeapon == null) return;
         weaponAnim = activeWeapon.GetComponent<Animator>();
-        if (weaponAnim == null) return;
+        if (weaponAnim == null || itemEquipManager.currItemOnHand == null) return;
 
-        if (!attacking)
+        if (!attacking && GetComponent<ItemEquipManager>().currItemOnHand.transform.parent.name.ToLower().Contains("weapon"))
         {
             if (Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") != 0)
             {

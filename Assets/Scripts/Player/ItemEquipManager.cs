@@ -28,7 +28,7 @@ public class ItemEquipManager : MonoBehaviour
                 {
                     if (weapon.name.ToLower().Contains("axe"))
                     {
-                        TutorialManager.instance.UpdateStage(TutorialStage.Equip_Axe);
+                        TutorialManager.instance.UpdateStage(TutorialStage.Craft_And_Equip_Axe);
                     }
                     weapon.SetActive(true);
                     currItemOnHand = weapon;

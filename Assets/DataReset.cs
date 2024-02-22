@@ -6,13 +6,20 @@ public class DataReset : MonoBehaviour
 {
     [SerializeField] DailyObjectives dailyObjs;
     [SerializeField] Dialogues dialogues;
-    [SerializeField] IndiCollectable meat;
+    [SerializeField] IndiCollectable axe;
+    [SerializeField] IndiCollectable[] food;
     [SerializeField] IndiCollectable[] toyMats;
+    [SerializeField] IndiCollectable[] axeMats;
     [SerializeField] IndiCollectable[] healthCollects;
 
     private void Start()
     {
-        foreach(StartingMessage startingmess in dialogues.startingMessages_Daughter)
+        axe.quanity = 0;
+        foreach (IndiCollectable mat in axeMats)
+        {
+            mat.quanity = 0;
+        }
+        foreach (StartingMessage startingmess in dialogues.startingMessages_Daughter)
         {
             startingmess.keepDisplaying = true;
         }
@@ -20,7 +27,10 @@ public class DataReset : MonoBehaviour
         {
             obj.complete = false;
         }
-        meat.quanity = 0;
+        foreach (IndiCollectable foodind in food)
+        {
+            foodind.quanity = 0;
+        }
         foreach (IndiCollectable mat in toyMats)
         {
             mat.quanity = 2;

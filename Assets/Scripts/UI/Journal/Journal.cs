@@ -78,6 +78,7 @@ public class Journal : MonoBehaviour
     public void BookmarkSwitch(RectTransform bookmark)
     {
         animator.Play("Switch Section");
+        AudioManager.instance.PlayOpenJournal();
         StartCoroutine(BookmarkDeselect(previousSelectBm, 0.2f));
         StartCoroutine(BookmarkSelect(bookmark, 0.2f));
         StartCoroutine(DisplaySection(bookmark, 0.2f));

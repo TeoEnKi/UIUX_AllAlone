@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerManager.instance.objectInfrontOfPlayer == null && textStillPrinting) return;
+        if (PlayerManager.instance.objectInfrontOfPlayer == null || textStillPrinting) return;
         if (Input.GetKeyDown(KeyCode.E) && PlayerManager.instance.objectInfrontOfPlayer.CompareTag("Daughter") && currMessage == null)
         {
             TutorialManager.instance.UpdateStage(TutorialStage.Talk_To_Daughter);
@@ -57,8 +57,6 @@ public class DialogueManager : MonoBehaviour
     }
     private void SetUpCurrMessage(Person playerTalkingTo)
     {
-        Debug.LogWarning("eff");
-
         int currDayid = (int)PlayerManager.instance.currDay;
 
         switch (playerTalkingTo)
@@ -103,6 +101,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
         namePlaceholder.GetComponent<TMP_Text>().text = currMessage.person.ToString();
+        AudioManager.instance.PlayTalkingNoise();
         StartCoroutine(DisplayLetters());
     }
     public void DisplayBtns()
@@ -146,8 +145,9 @@ public class DialogueManager : MonoBehaviour
         {
             messagePlaceholder.GetComponent<TMP_Text>().text += chars[letterID];
             letterID++;
-            if (chars.Count == messagePlaceholder.GetComponent<TMP_Text>().text.Length)
+            if (chars.Count <= messagePlaceholder.GetComponent<TMP_Text>().text.Length)
             {
+                AudioManager.instance.StopTalkingNoise();
                 textStillPrinting = false;
             }
             yield return new WaitForSeconds(0.1f);

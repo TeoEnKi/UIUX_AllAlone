@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,8 @@ public class DataManager : MonoBehaviour
     [Header("Graphics")]
     RenderTexture renderTexture;
     [SerializeField] int minResMulti = 15;
-    public int currResMulti = 0;
+    public int currResMulti = 0; 
+
 
     // Start is called before the first frame update
     void Awake()
@@ -20,6 +22,7 @@ public class DataManager : MonoBehaviour
         else
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
     private void OnEnable()
@@ -30,7 +33,15 @@ public class DataManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
 
+            foreach (AudioSource audio in audios)
+            {
+                if (audio.gameObject.GetComponent<BackgroundAudioManager>() != null)
+                {
+                    audio.volume = PlayerPrefs.GetFloat("audioLvl");
+                }
+            }
             //currResMulti = minResMulti + (int)Mathf.Pow(PlayerPrefs.GetFloat("graphicsLvl"), 3);
             //Debug.Log(currResMulti);
             //Vector2 size = new Vector2(16, 9);

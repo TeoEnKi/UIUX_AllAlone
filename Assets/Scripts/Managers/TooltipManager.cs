@@ -125,7 +125,7 @@ public class TooltipManager : MonoBehaviour
     public bool NearPlayer(Vector3 spherePos)
     {
         Collider[] colliders;
-        colliders = Physics.OverlapSphere(spherePos, 30);
+        colliders = Physics.OverlapSphere(spherePos, 15);
         foreach (Collider collider in colliders)
         {
             if (collider.transform.CompareTag("Player"))

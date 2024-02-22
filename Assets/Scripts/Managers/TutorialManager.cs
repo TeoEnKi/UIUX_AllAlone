@@ -2,11 +2,11 @@ using TMPro;
 using UnityEngine;
 public enum TutorialStage
 {
-    Use_WASD_Keys_To_Move, 
+    Use_WASD_Keys_To_Move,
     Talk_To_Daughter, Go_To_Kitchen_And_Pick_Up_Food_Ingredient, Press_Tab_Key_To_Open_Inventory_And_Equip_Ingredient, Cook_At_Pot, Pick_Up_And_Equip_Cooked_Food_And_Feed_Daughter,
     Talk_To_Daughter_Again, Press_Q_And_Open_Craft_Toys_Section, Craft_Toy, Equip_And_Give_Toy,
-    Go_To_Exit, Press_Tab_To_Open_Inventory, Eat_Pills_To_Recover_Mental_State, Use_MedKit_To_Recover_Physical_State,
-    Equip_Axe, Go_Out_And_Kill_It
+    Investigate_Noise, Press_Tab_To_Open_Inventory, Eat_Pills_To_Recover_Mental_State, Use_MedKit_To_Recover_Physical_State,
+    Craft_And_Equip_Axe, Go_Out_And_Kill_It
 };
 
 public class TutorialManager : MonoBehaviour
@@ -71,7 +71,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void UpdateStage(TutorialStage stageToProgressFrom)
     {
-        if (currStage != stageToProgressFrom) return;
+        if (currStage != stageToProgressFrom) return; 
         if (currStage == TutorialStage.Pick_Up_And_Equip_Cooked_Food_And_Feed_Daughter)
         {
             startMessFood.keepDisplaying = false;
@@ -82,12 +82,16 @@ public class TutorialManager : MonoBehaviour
             toyObj.complete = true;
             startMessToy.keepDisplaying = false;
         }
+
         NextStage();
 
     }
     public void NextStage()
     {
         currStage = (TutorialStage)((int)currStage + 1);
+
+        AudioManager.instance.PlayNewInstuctionsNoise();
+
         DisplayInstuctions();
     }
     void DisplayInstuctions()

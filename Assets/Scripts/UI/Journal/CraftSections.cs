@@ -63,7 +63,6 @@ public class CraftSections : MonoBehaviour
             needMat.collectable.quanity -= needMat.neededQty;
         }
 
-
         craftingRecipes[page1_recipeId + selectedPageId].result.quanity++;
         CheckCraftabilty();
 

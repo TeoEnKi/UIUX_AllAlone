@@ -20,12 +20,13 @@ public class JournalInventory : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) )
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             playerManager.playerState = PlayerState.Journal;
-
             if (!journal.gameObject.activeSelf)
             {
+                AudioManager.instance.PlayOpenJournal();
+
                 HideInventory();
                 journal.gameObject.SetActive(true);
                 journalAnimator.Play("Open");
@@ -37,6 +38,8 @@ public class JournalInventory : MonoBehaviour
 
             if (!inventory.gameObject.activeSelf)
             {
+                AudioManager.instance.PlayOpenInventory();
+
                 HideJournal();
                 inventory.gameObject.SetActive(true);
             }
@@ -48,7 +51,7 @@ public class JournalInventory : MonoBehaviour
                 playerManager.playerState = PlayerState.None;
                 HideJournal();
             }
-            if(playerManager.playerState == PlayerState.Inventory)
+            if (playerManager.playerState == PlayerState.Inventory)
             {
                 playerManager.playerState = PlayerState.None;
                 HideInventory();

@@ -27,7 +27,7 @@ public class PickUpCollectables : MonoBehaviour
                     {
                         TutorialManager.instance.UpdateStage(TutorialStage.Go_To_Kitchen_And_Pick_Up_Food_Ingredient);
                     }
-
+                    AudioManager.instance.PlayPickUpNoise();
                     indiCol.quanity++;
                     Destroy(PlayerManager.instance.objectInfrontOfPlayer);
                     TooltipManager.instance.HideTooltip();

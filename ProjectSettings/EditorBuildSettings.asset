@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Cabin.unity
     guid: 866bbeb121ef83f449972ff3f1570d0b
   - enabled: 1
-    path: Assets/Scenes/Outside.unity
+    path: Assets/Scenes/End.unity
     guid: 008ea4006d74daf4cade5b8022c5141b
   m_configObjects: {}

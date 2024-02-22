@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
+
     [Header("Start Menu")]
     [SerializeField] Sprite[] continueSprites;
     [SerializeField] Button[] startMenuBtns;
@@ -16,6 +18,7 @@ public class Menu : MonoBehaviour
     [SerializeField] float maxYSettings = 34;
     [SerializeField] float minYSettings = -1000;
     [SerializeField] Slider graphicsSlider;
+    [SerializeField] Slider audioSlider;
 
     [Header("Managers")]
     //AudioManager audioManager
@@ -133,5 +136,11 @@ public class Menu : MonoBehaviour
     {
         PlayerPrefs.SetFloat("graphicsLvl", graphicsSlider.value);
 
+    }
+    public void SetAudioLevel(Slider audioSlider)
+    {
+        PlayerPrefs.SetFloat("audioLvl", audioSlider.value);
+        float unit = audioSource.maxDistance / audioSlider.maxValue;
+        audioSource.volume = audioSlider.value*unit;
     }
 }

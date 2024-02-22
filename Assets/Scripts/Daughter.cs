@@ -27,9 +27,11 @@ public class Daughter : MonoBehaviour
             {
                 if (toy.name == itemEquipManager.currItemOnHand.name)
                 {
-                    TutorialManager.instance.UpdateStage(TutorialStage.Equip_And_Give_Toy);
                     toy.quanity--;
                     itemEquipManager.currItemOnHand.SetActive(false);
+                    Debug.Log("non"); Debug.Log(TutorialManager.instance.currStage);
+                    TutorialManager.instance.UpdateStage(TutorialStage.Equip_And_Give_Toy);
+                    BackgroundAudioManager.instance.PlayStaticNoise();
                     break;
                 }
             }

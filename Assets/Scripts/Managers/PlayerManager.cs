@@ -98,7 +98,7 @@ public class PlayerManager : MonoBehaviour
 
     private void RevealNearbyCollectables()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 30);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 10);
         {
             if (colliders.Length > 0)
                 foreach (Collider collider in colliders)
@@ -162,11 +162,11 @@ public class PlayerManager : MonoBehaviour
 
     private void Die()
     {
-        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
+        
     }
     private void HandleCursor()
     {
-        if (playerState != PlayerState.None && playerState != PlayerState.NewScene)
+        if (playerState != PlayerState.None)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -181,6 +181,8 @@ public class PlayerManager : MonoBehaviour
     {
         //camera black out?
         playerState = PlayerState.NewScene;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
+        //move to spawn
+
     }
 }

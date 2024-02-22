@@ -18,6 +18,7 @@ public class NextScene : MonoBehaviour
         if (PlayerManager.instance.objectInfrontOfPlayer == null) return;
         if(Input.GetKeyDown(KeyCode.E)&& PlayerManager.instance.objectInfrontOfPlayer.CompareTag("Door"))
         {
+            BackgroundAudioManager.instance.StopStaticNoise();
             PlayerManager.instance.MoveToNextScene();
         }
     }
