@@ -35,11 +35,24 @@ public class TooltipManager : MonoBehaviour
             if (toolTipPanels[0].GetComponentInChildren<TMP_Text>() == null) { Debug.Log("null"); }
             toolTipPanels[0].GetComponentInChildren<TMP_Text>().text = "[E] Pick Up";
         }
+        else if (gameObject.tag == "Door")
+        {
+            toolTipPanels[0].gameObject.SetActive(true);
+            if (toolTipPanels[0].GetComponentInChildren<TMP_Text>() == null) { Debug.Log("null"); }
+            toolTipPanels[0].GetComponentInChildren<TMP_Text>().text = "[E] Leave";
+        }
+        else if (gameObject.tag == "Cook Area")
+        {
+            toolTipPanels[0].gameObject.SetActive(true);
+            if (toolTipPanels[0].GetComponentInChildren<TMP_Text>() == null) { Debug.Log("null"); }
+            toolTipPanels[0].GetComponentInChildren<TMP_Text>().text = "[E] Cook";
+        }
         else if (gameObject.tag == "Daughter")
         {
             int daughterInteractions = 1;
             foreach (Objective obj in dailyObjectives[(int)PlayerManager.instance.currDay].objectives)
             {
+            Debug.Log(obj.objTitle);
                 if (obj.objType == ObjType.Daughter && !obj.complete && !obj.objTitle.ToLower().Contains("talk"))
                 {
                     daughterInteractions++;
@@ -49,8 +62,10 @@ public class TooltipManager : MonoBehaviour
 
             toolTipPanels[daughterInteractions - 1].gameObject.SetActive(true);
             TMP_Text actionTxt = toolTipPanels[daughterInteractions - 1].GetComponentInChildren<TMP_Text>();
+            
             if (toolTipPanels[daughterInteractions - 1] == null) { Debug.Log("null"); }
             Debug.Log(toolTipPanels[daughterInteractions - 1].name);
+
             if (toolTipPanels[daughterInteractions - 1].GetComponentInChildren<TMP_Text>() == null) { Debug.Log("null"); }
 
             string actions = "";

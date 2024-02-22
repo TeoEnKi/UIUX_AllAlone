@@ -7,7 +7,7 @@ public class ItemEquipManager : MonoBehaviour
     [SerializeField] GameObject[] toys;
     [SerializeField] GameObject[] foods;
 
-    [SerializeField] GameObject currItemOnHand;
+    public GameObject currItemOnHand;
 
     //use in inventory
     public bool Equip(string type, string itemName)
@@ -26,6 +26,10 @@ public class ItemEquipManager : MonoBehaviour
             {
                 if (itemName == weapon.name)
                 {
+                    if (weapon.name.ToLower().Contains("axe"))
+                    {
+                        TutorialManager.instance.UpdateStage(TutorialStage.Equip_Axe);
+                    }
                     weapon.SetActive(true);
                     currItemOnHand = weapon;
                     return true;
@@ -50,6 +54,10 @@ public class ItemEquipManager : MonoBehaviour
             {
                 if (itemName == food.name)
                 {
+                    if (!food.name.ToLower().Contains("cooked"))
+                    {
+                        TutorialManager.instance.UpdateStage(TutorialStage.Press_Tab_Key_To_Open_Inventory_And_Equip_Ingredient);
+                    }
                     food.SetActive(true);
                     currItemOnHand = food;
                     return true;
@@ -59,5 +67,10 @@ public class ItemEquipManager : MonoBehaviour
         Debug.LogWarning("no match");
         return false;
 
+    }
+    public void Unequip()
+    {
+        currItemOnHand.SetActive(false);
+        currItemOnHand =null;
     }
 }

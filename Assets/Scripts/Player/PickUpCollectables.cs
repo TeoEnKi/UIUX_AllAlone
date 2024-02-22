@@ -17,13 +17,16 @@ public class PickUpCollectables : MonoBehaviour
     }
     void PickUp()
     {
-        foreach(Collectables collectableGrp in collectableGrps)
+        foreach (Collectables collectableGrp in collectableGrps)
         {
-            foreach(IndiCollectable indiCol in collectableGrp.collectables)
+            foreach (IndiCollectable indiCol in collectableGrp.collectables)
             {
                 if (indiCol.collectablePref.name.Contains(PlayerManager.instance.objectInfrontOfPlayer.name))
                 {
-                    Debug.Log(indiCol.collectablePref.name +" "+PlayerManager.instance.objectInfrontOfPlayer.name);
+                    if (collectableGrp.type == CollectableType.Food && !indiCol.collectablePref.name.ToLower().Contains("cooked"))
+                    {
+                        TutorialManager.instance.UpdateStage(TutorialStage.Go_To_Kitchen_And_Pick_Up_Food_Ingredient);
+                    }
 
                     indiCol.quanity++;
                     Destroy(PlayerManager.instance.objectInfrontOfPlayer);

@@ -17,13 +17,18 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] Dialogues[] dialogues;
 
+    bool textStillPrinting = false;
+
     private void Update()
     {
+        if (PlayerManager.instance.objectInfrontOfPlayer == null && textStillPrinting) return;
         if (Input.GetKeyDown(KeyCode.E) && PlayerManager.instance.objectInfrontOfPlayer.CompareTag("Daughter") && currMessage == null)
         {
-
+            TutorialManager.instance.UpdateStage(TutorialStage.Talk_To_Daughter);
+            TutorialManager.instance.UpdateStage(TutorialStage.Talk_To_Daughter_Again);
             PlayerManager.instance.playerState = PlayerState.Dialogue;
             SetUpCurrMessage(Person.Daughter);
+            if (currMessage == null) return;
             DisplayCurrMessage();
         }
         else if (Input.anyKeyDown && currMessage != null)
@@ -64,7 +69,6 @@ public class DialogueManager : MonoBehaviour
                     if (startingMessage.keepDisplaying)
                     {
                         currMessage = startingMessage.startingMessage;
-                        Debug.Log(currMessage == null);
                         break;
                     }
                 }
@@ -98,8 +102,6 @@ public class DialogueManager : MonoBehaviour
                 opt.gameObject.SetActive(false);
             }
         }
-        Debug.Log(currMessage.person.ToString());
-        Debug.Log(namePlaceholder.GetComponent<TMP_Text>() == null);
         namePlaceholder.GetComponent<TMP_Text>().text = currMessage.person.ToString();
         StartCoroutine(DisplayLetters());
     }
@@ -137,14 +139,20 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator DisplayLetters()
     {
+        textStillPrinting = true;
         List<char> chars = currMessage.text.ToList();
         int letterID = 0;
         while (chars.Count > messagePlaceholder.GetComponent<TMP_Text>().text.Length)
         {
             messagePlaceholder.GetComponent<TMP_Text>().text += chars[letterID];
             letterID++;
+            if (chars.Count == messagePlaceholder.GetComponent<TMP_Text>().text.Length)
+            {
+                textStillPrinting = false;
+            }
             yield return new WaitForSeconds(0.1f);
         }
+
     }
 
 }

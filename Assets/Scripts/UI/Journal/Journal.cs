@@ -95,6 +95,10 @@ public class Journal : MonoBehaviour
         {
             if (section.name == secName)
             {
+                if (section.name.ToLower().Contains("toy"))
+                {
+                    TutorialManager.instance.UpdateStage(TutorialStage.Press_Q_And_Open_Craft_Toys_Section);
+                }
                 section.gameObject.SetActive(true);
             }
             else

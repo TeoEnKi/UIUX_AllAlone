@@ -8,6 +8,9 @@ TagManager:
   - Collectable
   - Daughter
   - Survivor
+  - Weapon Placeholder
+  - Cook Area
+  - Door
   layers:
   - Default
   - TransparentFX

@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class DamageManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    private void OnCollisionEnter(Collision other)
     {
-        
+        if (other.gameObject.CompareTag("Enemy")){
+            PlayerManager.instance.ChangeMentState(-100);
+        }
     }
 }

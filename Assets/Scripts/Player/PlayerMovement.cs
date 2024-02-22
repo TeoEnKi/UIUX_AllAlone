@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isRunning = false;
     PlayerManager playerManager;
 
+
     void Start()
     {
         playerManager = GetComponent<PlayerManager>();
@@ -43,6 +44,12 @@ public class PlayerMovement : MonoBehaviour
         float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+
+
+        if(moveDirection != new Vector3(0, 0, 0))
+        {
+            TutorialManager.instance.UpdateStage(TutorialStage.Use_WASD_Keys_To_Move);
+        }
 
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {

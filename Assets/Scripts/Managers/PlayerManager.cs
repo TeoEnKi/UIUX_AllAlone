@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public enum PlayerState { None, NewScene, Dialogue, Journal, Inventory };
 
@@ -69,25 +70,23 @@ public class PlayerManager : MonoBehaviour
         if (PlayerPrefs.HasKey(phyHealthKey))
         {
             currPhysHealthLvl = PlayerPrefs.GetInt(phyHealthKey);
-            ChangePhyState(0);
+            ChangePhyState(100);
 
         }
         else
         {
             currPhysHealthLvl = physicalHealthLvl;
-            ChangePhyState(-50);
         }
 
         if (PlayerPrefs.HasKey(mentHealthKey))
         {
             currMentHealthLvl = PlayerPrefs.GetInt(mentHealthKey);
-            ChangeMentState(0);
+            ChangeMentState(100);
 
         }
         else
         {
             currMentHealthLvl = mentalHealthLvl;
-            ChangeMentState(-40);
 
         }
     }
@@ -108,7 +107,6 @@ public class PlayerManager : MonoBehaviour
                     if (collider.transform.parent.CompareTag("Collectable"))
                     {
                         int siblingId = collider.transform.GetSiblingIndex();
-                        Debug.Log(collider.gameObject.name +" "+ collider.transform.parent.name);
 
                         RectTransform[] rectTransforms = collider.transform.parent.GetComponentsInChildren<RectTransform>();
                         foreach (RectTransform rect in rectTransforms)
@@ -164,11 +162,11 @@ public class PlayerManager : MonoBehaviour
 
     private void Die()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
     }
     private void HandleCursor()
     {
-        if (playerState != PlayerState.None && playerState!= PlayerState.NewScene)
+        if (playerState != PlayerState.None && playerState != PlayerState.NewScene)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -178,5 +176,11 @@ public class PlayerManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+    }
+    public void MoveToNextScene()
+    {
+        //camera black out?
+        playerState = PlayerState.NewScene;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -56,6 +56,7 @@ public class CraftSections : MonoBehaviour
 
         if (craftable[selectedPageId] == false) return;
 
+        TutorialManager.instance.UpdateStage(TutorialStage.Craft_Toy);
 
         foreach (NeededMaterial needMat in craftingRecipes[page1_recipeId + selectedPageId].neededMaterials)
         {

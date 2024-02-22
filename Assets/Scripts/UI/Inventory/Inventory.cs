@@ -57,6 +57,7 @@ public class Inventory : MonoBehaviour
     }
     private void OnEnable()
     {
+        TutorialManager.instance.UpdateStage(TutorialStage.Press_Tab_To_Open_Inventory);
         DisplayItems();
     }
     //show collectable img
@@ -69,7 +70,7 @@ public class Inventory : MonoBehaviour
             {
                 foreach (IndiCollectable collectable in collectableGroup.collectables)
                 {
-                    if (collectable.quanity <= 0) 
+                    if (collectable.quanity <= 0)
                     {
                         collectable.quanity = 0;
                         continue;
@@ -162,6 +163,10 @@ public class Inventory : MonoBehaviour
     {
         if (itemName == "Pills")
         {
+            if (TutorialManager.instance != null)
+            {
+                if (TutorialManager.instance.BlockArea(TutorialStage.Eat_Pills_To_Recover_Mental_State)) return;
+            }
             foreach (Collectables colGrp in collectableGroups)
             {
                 if (colGrp.type != CollectableType.Health) continue;
@@ -169,6 +174,7 @@ public class Inventory : MonoBehaviour
                 {
                     if (indiCol.name.Contains(itemName))
                     {
+                        TutorialManager.instance.UpdateStage(TutorialStage.Eat_Pills_To_Recover_Mental_State);
                         indiCol.quanity--;
                         PlayerManager.instance.ChangeMentState(20);
                         return;
@@ -180,11 +186,16 @@ public class Inventory : MonoBehaviour
         {
             foreach (Collectables colGrp in collectableGroups)
             {
+                if (TutorialManager.instance != null)
+                {
+                    if (TutorialManager.instance.BlockArea(TutorialStage.Use_MedKit_To_Recover_Physical_State)) return;
+                }
                 if (colGrp.type != CollectableType.Health) continue;
                 foreach (IndiCollectable indiCol in colGrp.collectables)
                 {
                     if (indiCol.name.Contains(itemName))
                     {
+                        TutorialManager.instance.UpdateStage(TutorialStage.Use_MedKit_To_Recover_Physical_State);
                         indiCol.quanity--;
                         PlayerManager.instance.ChangePhyState(20);
                         return;
