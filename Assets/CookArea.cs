@@ -20,7 +20,7 @@ public class CookArea : MonoBehaviour
     void Update()
     {
         if (itemEquipManager == null || PlayerManager.instance == null || TutorialManager.instance == null) return;
-        if (TutorialManager.instance.BlockArea(TutorialStage.Cook_At_Pot)) return;
+        if (TutorialManager.instance.BlockArea(TutorialStage.Cook_At_Pot) || itemEquipManager.currItemOnHand == null) return;
         if(Input.GetKeyDown(KeyCode.E) && PlayerManager.instance.objectInfrontOfPlayer.CompareTag("Cook Area") && itemEquipManager.currItemOnHand.transform.parent.name.Contains("Food"))
         {
             foreach(IndiCollectable food in foodIngre)

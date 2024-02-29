@@ -31,7 +31,7 @@ public class HoverOverItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         string[] type_name = transform.GetComponent<Image>().sprite.name.Split('_');
         string type = type_name[0];
         string name = type_name[1];
-
+        
         foreach (Collectables collectableGroup in inventory.collectableGroups)
         {
             if (collectableGroup.type.ToString() == type)
@@ -39,8 +39,9 @@ public class HoverOverItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
                 foreach (IndiCollectable collectable in collectableGroup.collectables)
                 {
-                    if (collectable.name != name)
+                    if (collectable.collectablePref.name != name)
                     {
+                        Debug.Log(name+" "+collectable.name);
                         continue;
                     }
                     else

@@ -15,6 +15,7 @@ public class TutorialManager : MonoBehaviour
 
     public TutorialStage currStage;
     [SerializeField] DailyObjectives tutObjs;
+    [HideInInspector] public Objective talkObj;
     [HideInInspector] public Objective feedObj;
     [HideInInspector] public Objective toyObj;
     [SerializeField] Dialogues tutDia;
@@ -48,6 +49,11 @@ public class TutorialManager : MonoBehaviour
                 toyObj = obj;
                 continue;
             }
+            else if (obj.objTitle.ToLower().Contains("talk"))
+            {
+                talkObj = obj;
+                continue;
+            }
         }
         foreach (StartingMessage startMess in tutDia.startingMessages_Daughter)
         {
@@ -71,11 +77,15 @@ public class TutorialManager : MonoBehaviour
     }
     public void UpdateStage(TutorialStage stageToProgressFrom)
     {
-        if (currStage != stageToProgressFrom) return; 
+        if (currStage != stageToProgressFrom) return;
         if (currStage == TutorialStage.Pick_Up_And_Equip_Cooked_Food_And_Feed_Daughter)
         {
             startMessFood.keepDisplaying = false;
             feedObj.complete = true;
+        }
+        else if (currStage == TutorialStage.Talk_To_Daughter_Again)
+        {
+            talkObj.complete = true;
         }
         else if (currStage == TutorialStage.Equip_And_Give_Toy)
         {
